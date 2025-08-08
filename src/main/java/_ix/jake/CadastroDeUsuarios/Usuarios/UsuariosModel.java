@@ -1,5 +1,6 @@
-package _ix.jake.CadastroDeUsuarios;
+package _ix.jake.CadastroDeUsuarios.Usuarios;
 
+import _ix.jake.CadastroDeUsuarios.Atividades.AtividadesModel;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,26 +10,24 @@ public class UsuariosModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
     private String email;
+
     private int idade;
 
+    @ManyToOne
+    @JoinColumn()
+    private AtividadesModel atividades;
+
     public UsuariosModel(Long id, int idade, String email, String nome) {
-        this.id = id;
         this.idade = idade;
         this.email = email;
         this.nome = nome;
     }
 
     public UsuariosModel() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public int getIdade() {

@@ -1,4 +1,4 @@
-package _ix.jake.CadastroDeUsuarios;
+package _ix.jake.CadastroDeUsuarios.Usuarios;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
