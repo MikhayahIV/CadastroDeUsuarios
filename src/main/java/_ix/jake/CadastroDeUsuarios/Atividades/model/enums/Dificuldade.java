@@ -1,4 +1,4 @@
-package _ix.jake.CadastroDeUsuarios.Atividades;
+package _ix.jake.CadastroDeUsuarios.Atividades.model.enums;
 
 public enum Dificuldade {
     S("Muito Dificil"),

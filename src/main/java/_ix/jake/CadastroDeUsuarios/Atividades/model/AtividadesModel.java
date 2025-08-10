@@ -1,12 +1,12 @@
-package _ix.jake.CadastroDeUsuarios.Atividades;
+package _ix.jake.CadastroDeUsuarios.Atividades.model;
 
-import _ix.jake.CadastroDeUsuarios.Usuarios.UsuariosModel;
+import _ix.jake.CadastroDeUsuarios.Atividades.model.enums.Dificuldade;
+import _ix.jake.CadastroDeUsuarios.Usuarios.model.UsuariosModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity

@@ -1,6 +1,6 @@
-package _ix.jake.CadastroDeUsuarios.Usuarios;
+package _ix.jake.CadastroDeUsuarios.Usuarios.model;
 
-import _ix.jake.CadastroDeUsuarios.Atividades.AtividadesModel;
+import _ix.jake.CadastroDeUsuarios.Atividades.model.AtividadesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +18,9 @@ public class UsuariosModel {
     private Long id;
 
     private String nome;
+
+    @Column(name= "image_url")
+    private String imgUrl;
 
     @Column(unique = true)
     private String email;
