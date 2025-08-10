@@ -1,6 +1,5 @@
 package _ix.jake.CadastroDeUsuarios.Atividades.model;
 
-import _ix.jake.CadastroDeUsuarios.Atividades.model.enums.Dificuldade;
 import _ix.jake.CadastroDeUsuarios.Usuarios.model.UsuariosModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,8 +21,8 @@ public class AtividadesModel {
 
     private String nome;
 
-    @Enumerated(EnumType.STRING)
-    private Dificuldade dificuldade;
+
+    private String dificuldade;
 
     @OneToMany(mappedBy = "atividades")
     private List<UsuariosModel> usuarios;
