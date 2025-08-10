@@ -22,6 +22,7 @@ public class AtividadesModel {
 
     private String nome;
 
+    @Enumerated(EnumType.STRING)
     private Dificuldade dificuldade;
 
     @OneToMany(mappedBy = "atividades")
