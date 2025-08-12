@@ -18,22 +18,22 @@ public class UsuariosController {
     }
 
     @GetMapping("/lista-de-usuarios")
-    public String mostraratividade(){
+    public String mostraraUsuarios(){
         return "Lista de Usuarios";
     }
 
     @GetMapping("/usuario-id")
-    public String mostrarAtividadeID(){
+    public String mostrarUsuarisID(){
         return "Usuario por id";
     }
 
     @PutMapping("/atualizar-usuario-id")
-    public String alterarAtividadePorID(){
+    public String alterarUsuarisPorID(){
         return "Alterar usuario";
     }
 
     @DeleteMapping("/deletar-usuario-id")
-    public String deletarAtividadePorID(){
+    public String deletarUsuariosPorID(){
         return "usuario Deletado";
     }
 }
