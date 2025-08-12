@@ -1,11 +1,21 @@
 package _ix.jake.CadastroDeUsuarios.Usuarios.controller;
 
 
+import _ix.jake.CadastroDeUsuarios.Usuarios.model.UsuariosModel;
+import _ix.jake.CadastroDeUsuarios.Usuarios.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
 public class UsuariosController {
+
+    private UsuarioService usuarioService;
+
+    public UsuariosController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 
     @GetMapping("/boasVindas")
     public String boasVindas(){
@@ -18,8 +28,8 @@ public class UsuariosController {
     }
 
     @GetMapping("/lista-de-usuarios")
-    public String mostraraUsuarios(){
-        return "Lista de Usuarios";
+    public List<UsuariosModel> mostraraUsuarios(){
+        return usuarioService.listarUsuarios() ;
     }
 
     @GetMapping("/usuario-id")

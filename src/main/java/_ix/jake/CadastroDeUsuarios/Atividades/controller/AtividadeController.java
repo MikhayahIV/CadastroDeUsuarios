@@ -1,10 +1,20 @@
 package _ix.jake.CadastroDeUsuarios.Atividades.controller;
 
+import _ix.jake.CadastroDeUsuarios.Atividades.model.AtividadesModel;
+import _ix.jake.CadastroDeUsuarios.Atividades.service.AtividadeService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/atividades")
 public class AtividadeController {
+
+    private AtividadeService atividadeservice;
+
+    public AtividadeController(AtividadeService atividadeservice) {
+        this.atividadeservice = atividadeservice;
+    }
 
     @PostMapping("/adicionar-atividade")
     public String criarAtividade(){
@@ -12,8 +22,8 @@ public class AtividadeController {
     }
 
     @GetMapping("/lista-de-atividades")
-    public String mostraratividade(){
-        return "Lista de Atividades";
+    public List<AtividadesModel> listarAtividades(){
+        return atividadeservice.listarAtividades();
     }
 
     @GetMapping("/atividade-id")
