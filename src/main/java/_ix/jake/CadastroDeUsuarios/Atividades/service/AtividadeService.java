@@ -5,6 +5,7 @@ import _ix.jake.CadastroDeUsuarios.Atividades.repository.AtividadesRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AtividadeService {
@@ -19,4 +20,8 @@ public class AtividadeService {
         return atividadesrepository.findAll();
     }
 
+    public AtividadesModel listarPorId(Long id){
+        Optional<AtividadesModel> atividadesPorId = atividadesrepository.findById(id);
+        return atividadesPorId.orElse(null);
+    }
 }

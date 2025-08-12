@@ -33,8 +33,8 @@ public class UsuariosController {
     }
 
     @GetMapping("/listar/{id}")
-    public String mostrarUsuarisID(){
-        return "Usuario por id";
+    public UsuariosModel listarPorId(@PathVariable Long id){
+        return usuarioService.usuarioPorId(id);
     }
 
     @PutMapping("/atualizar/{id}")

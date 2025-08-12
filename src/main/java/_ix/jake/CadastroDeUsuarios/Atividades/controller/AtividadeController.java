@@ -27,8 +27,8 @@ public class AtividadeController {
     }
 
     @GetMapping("/listar/{id}")
-    public String mostrarAtividadeID(){
-        return "Atividade por id";
+    public AtividadesModel listarPorId(@PathVariable Long id){
+        return atividadeservice.listarPorId(id);
     }
 
     @PutMapping("/atualizar/{id}")
