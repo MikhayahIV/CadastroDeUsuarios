@@ -1,6 +1,7 @@
 package _ix.jake.CadastroDeUsuarios.Atividades.model;
 
 import _ix.jake.CadastroDeUsuarios.Usuarios.model.UsuariosModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class AtividadesModel {
     private String dificuldade;
 
     @OneToMany(mappedBy = "atividades")
+    @JsonIgnore
     private List<UsuariosModel> usuarios;
 
 }
