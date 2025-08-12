@@ -22,27 +22,27 @@ public class UsuariosController {
         return "Essa é a minha primeira mensagem";
     }
 
-    @PostMapping("/adicionar-usuario")
+    @PostMapping("/adicionar")
     public String criarUsuario(){
         return "Usuari Criado";
     }
 
-    @GetMapping("/lista-de-usuarios")
+    @GetMapping("/listar")
     public List<UsuariosModel> mostraraUsuarios(){
         return usuarioService.listarUsuarios() ;
     }
 
-    @GetMapping("/usuario-id")
+    @GetMapping("/listar/{id}")
     public String mostrarUsuarisID(){
         return "Usuario por id";
     }
 
-    @PutMapping("/atualizar-usuario-id")
+    @PutMapping("/atualizar/{id}")
     public String alterarUsuarisPorID(){
         return "Alterar usuario";
     }
 
-    @DeleteMapping("/deletar-usuario-id")
+    @DeleteMapping("/deletar/{id}")
     public String deletarUsuariosPorID(){
         return "usuario Deletado";
     }

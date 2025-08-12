@@ -16,27 +16,27 @@ public class AtividadeController {
         this.atividadeservice = atividadeservice;
     }
 
-    @PostMapping("/adicionar-atividade")
+    @PostMapping("/adicionar")
     public String criarAtividade(){
         return "Atividade Criado";
     }
 
-    @GetMapping("/lista-de-atividades")
+    @GetMapping("/listar")
     public List<AtividadesModel> listarAtividades(){
         return atividadeservice.listarAtividades();
     }
 
-    @GetMapping("/atividade-id")
+    @GetMapping("/listar/{id}")
     public String mostrarAtividadeID(){
         return "Atividade por id";
     }
 
-    @PutMapping("/atualizar-atividade-id")
+    @PutMapping("/atualizar/{id}")
     public String alterarAtividadePorID(){
         return "Alterar Atividade";
     }
 
-    @DeleteMapping("/deletar-atividade-id")
+    @DeleteMapping("/deletar/{id}")
     public String deletarAtividadePorID(){
         return "Atividade Deletado";
     }
