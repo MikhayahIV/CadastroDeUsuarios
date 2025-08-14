@@ -23,8 +23,8 @@ public class UsuariosController {
     }
 
     @PostMapping("/adicionar")
-    public String criarUsuario(){
-        return "Usuari Criado";
+    public UsuariosModel criarUsuario(@RequestBody UsuariosModel usuario){
+        return usuarioService.criarUsuario(usuario);
     }
 
     @GetMapping("/listar")

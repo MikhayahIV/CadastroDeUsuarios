@@ -17,8 +17,8 @@ public class AtividadeController {
     }
 
     @PostMapping("/adicionar")
-    public String criarAtividade(){
-        return "Atividade Criado";
+    public AtividadesModel criarAtividade(@RequestBody AtividadesModel atividade){
+        return atividadeservice.criarAtividade(atividade);
     }
 
     @GetMapping("/listar")

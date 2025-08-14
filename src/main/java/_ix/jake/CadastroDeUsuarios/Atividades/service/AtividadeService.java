@@ -24,4 +24,8 @@ public class AtividadeService {
         Optional<AtividadesModel> atividadesPorId = atividadesrepository.findById(id);
         return atividadesPorId.orElse(null);
     }
+
+    public AtividadesModel criarAtividade(AtividadesModel atividade){
+        return atividadesrepository.save(atividade);
+    }
 }

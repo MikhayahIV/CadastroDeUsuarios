@@ -27,4 +27,8 @@ public class UsuarioService {
         return usuarioPorIc.orElse(null);
     }
 
+    public UsuariosModel criarUsuario(UsuariosModel usuario){
+        return usuariosrepository.save(usuario);
+    }
+
 }
