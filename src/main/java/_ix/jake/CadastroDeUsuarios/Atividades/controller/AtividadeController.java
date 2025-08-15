@@ -37,7 +37,7 @@ public class AtividadeController {
     }
 
     @DeleteMapping("/deletar/{id}")
-    public String deletarAtividadePorID(){
-        return "Atividade Deletado";
+    public void deletarPorId(@PathVariable Long id){
+        atividadeservice.deletarPorId(id);
     }
 }

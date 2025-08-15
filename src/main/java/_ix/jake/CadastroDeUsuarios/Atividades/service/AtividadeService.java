@@ -28,4 +28,8 @@ public class AtividadeService {
     public AtividadesModel criarAtividade(AtividadesModel atividade){
         return atividadesrepository.save(atividade);
     }
+
+    public void deletarPorId(Long id){
+        atividadesrepository.deleteById(id);
+    }
 }
