@@ -25,6 +25,8 @@ public class UsuariosModel {
     @Column(unique = true)
     private String email;
 
+    private String cargo;
+
     private int idade;
 
     @ManyToOne
