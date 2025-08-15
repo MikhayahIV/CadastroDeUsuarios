@@ -1,5 +1,7 @@
 package _ix.jake.CadastroDeUsuarios.Atividades.service;
 
+import _ix.jake.CadastroDeUsuarios.Atividades.DTOs.AtividadesDTO;
+import _ix.jake.CadastroDeUsuarios.Atividades.DTOs.AtividadesMapper;
 import _ix.jake.CadastroDeUsuarios.Atividades.model.AtividadesModel;
 import _ix.jake.CadastroDeUsuarios.Atividades.repository.AtividadesRepository;
 import org.springframework.stereotype.Service;
@@ -11,9 +13,11 @@ import java.util.Optional;
 public class AtividadeService {
 
     private AtividadesRepository atividadesrepository;
+    private AtividadesMapper atividadesmapper;
 
-    public AtividadeService(AtividadesRepository atividadesrepository) {
+    public AtividadeService(AtividadesRepository atividadesrepository, AtividadesMapper atividadesmapper) {
         this.atividadesrepository = atividadesrepository;
+        this.atividadesmapper = atividadesmapper;
     }
 
     public List<AtividadesModel> listarAtividades(){
@@ -25,8 +29,10 @@ public class AtividadeService {
         return atividadesPorId.orElse(null);
     }
 
-    public AtividadesModel criarAtividade(AtividadesModel atividade){
-        return atividadesrepository.save(atividade);
+    public AtividadesDTO criarAtividade(AtividadesDTO atividade){
+        AtividadesModel atividadesModel = atividadesmapper.map(atividade);
+        atividadesModel = atividadesrepository.save(atividadesModel);
+        return atividadesmapper.map(atividadesModel);
     }
 
     public void deletarPorId(Long id){

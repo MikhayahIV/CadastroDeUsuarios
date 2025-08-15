@@ -1,6 +1,7 @@
 package _ix.jake.CadastroDeUsuarios.Usuarios.controller;
 
 
+import _ix.jake.CadastroDeUsuarios.Usuarios.DTOs.UsuariosDTO;
 import _ix.jake.CadastroDeUsuarios.Usuarios.model.UsuariosModel;
 import _ix.jake.CadastroDeUsuarios.Usuarios.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class UsuariosController {
     }
 
     @PostMapping("/adicionar")
-    public UsuariosModel criarUsuario(@RequestBody UsuariosModel usuario){
+    public UsuariosDTO criarUsuario(@RequestBody UsuariosDTO usuario){
         return usuarioService.criarUsuario(usuario);
     }
 

@@ -1,5 +1,7 @@
 package _ix.jake.CadastroDeUsuarios.Usuarios.service;
 
+import _ix.jake.CadastroDeUsuarios.Usuarios.DTOs.UsuariosDTO;
+import _ix.jake.CadastroDeUsuarios.Usuarios.DTOs.UsuariosMapper;
 import _ix.jake.CadastroDeUsuarios.Usuarios.model.UsuariosModel;
 import _ix.jake.CadastroDeUsuarios.Usuarios.repository.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,11 @@ public class UsuarioService {
 
 
     private UsuariosRepository usuariosrepository;
+    private UsuariosMapper usuariosmapper;
 
-    public UsuarioService(UsuariosRepository usuariosrepository) {
+    public UsuarioService(UsuariosRepository usuariosrepository, UsuariosMapper usuariosmapper) {
         this.usuariosrepository = usuariosrepository;
+        this.usuariosmapper = usuariosmapper;
     }
 
     public List<UsuariosModel> listarUsuarios(){
@@ -27,8 +31,10 @@ public class UsuarioService {
         return usuarioPorIc.orElse(null);
     }
 
-    public UsuariosModel criarUsuario(UsuariosModel usuario){
-        return usuariosrepository.save(usuario);
+    public UsuariosDTO criarUsuario(UsuariosDTO usuariosDTO){
+        UsuariosModel usuariosModel = usuariosmapper.map(usuariosDTO);
+        usuariosModel = usuariosrepository.save(usuariosModel);
+        return usuariosmapper.map(usuariosModel);
     }
 
     public void deletarPorId(Long id){

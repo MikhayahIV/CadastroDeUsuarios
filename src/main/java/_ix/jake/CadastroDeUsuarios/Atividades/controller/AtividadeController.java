@@ -1,5 +1,6 @@
 package _ix.jake.CadastroDeUsuarios.Atividades.controller;
 
+import _ix.jake.CadastroDeUsuarios.Atividades.DTOs.AtividadesDTO;
 import _ix.jake.CadastroDeUsuarios.Atividades.model.AtividadesModel;
 import _ix.jake.CadastroDeUsuarios.Atividades.service.AtividadeService;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class AtividadeController {
     }
 
     @PostMapping("/adicionar")
-    public AtividadesModel criarAtividade(@RequestBody AtividadesModel atividade){
+    public AtividadesDTO criarAtividade(@RequestBody AtividadesDTO atividade){
         return atividadeservice.criarAtividade(atividade);
     }
 
