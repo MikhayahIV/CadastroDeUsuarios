@@ -32,4 +32,12 @@ public class AtividadeService {
     public void deletarPorId(Long id){
         atividadesrepository.deleteById(id);
     }
+
+    public AtividadesModel atualizarAtividadePorId(Long id, AtividadesModel atividadeAtualizada){
+        if(atividadesrepository.existsById(id)){
+            atividadeAtualizada.setId(id);
+            return atividadesrepository.save(atividadeAtualizada);
+        }
+        return null;
+    }
 }

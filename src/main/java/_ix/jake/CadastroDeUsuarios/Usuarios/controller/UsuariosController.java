@@ -38,8 +38,8 @@ public class UsuariosController {
     }
 
     @PutMapping("/atualizar/{id}")
-    public String alterarUsuarisPorID(){
-        return "Alterar usuario";
+    public UsuariosModel alteraraPorId(@PathVariable Long id, @RequestBody UsuariosModel usuarioAtualizado){
+        return usuarioService.atualizarPorId(id,usuarioAtualizado) ;
     }
 
     @DeleteMapping("/deletar/{id}")

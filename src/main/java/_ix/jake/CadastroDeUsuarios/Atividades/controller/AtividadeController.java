@@ -32,8 +32,8 @@ public class AtividadeController {
     }
 
     @PutMapping("/atualizar/{id}")
-    public String alterarAtividadePorID(){
-        return "Alterar Atividade";
+    public AtividadesModel atualizarPorID(@PathVariable Long id, @RequestBody AtividadesModel atividadeAtualizada){
+        return atividadeservice.atualizarAtividadePorId(id,atividadeAtualizada) ;
     }
 
     @DeleteMapping("/deletar/{id}")
