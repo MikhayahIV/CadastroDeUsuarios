@@ -1,5 +1,6 @@
 package _ix.jake.CadastroDeUsuarios.Atividades.controller;
 
+import _ix.jake.CadastroDeUsuarios.Atividades.DTOs.AtividadesDTO;
 import _ix.jake.CadastroDeUsuarios.Atividades.model.AtividadesModel;
 import _ix.jake.CadastroDeUsuarios.Atividades.service.AtividadeService;
 import org.springframework.web.bind.annotation.*;
@@ -17,22 +18,22 @@ public class AtividadeController {
     }
 
     @PostMapping("/adicionar")
-    public AtividadesModel criarAtividade(@RequestBody AtividadesModel atividade){
+    public AtividadesDTO criarAtividade(@RequestBody AtividadesDTO atividade){
         return atividadeservice.criarAtividade(atividade);
     }
 
     @GetMapping("/listar")
-    public List<AtividadesModel> listarAtividades(){
+    public List<AtividadesDTO> listarAtividades(){
         return atividadeservice.listarAtividades();
     }
 
     @GetMapping("/listar/{id}")
-    public AtividadesModel listarPorId(@PathVariable Long id){
+    public AtividadesDTO listarPorId(@PathVariable Long id){
         return atividadeservice.listarPorId(id);
     }
 
     @PutMapping("/atualizar/{id}")
-    public AtividadesModel atualizarPorID(@PathVariable Long id, @RequestBody AtividadesModel atividadeAtualizada){
+    public AtividadesDTO atualizarPorID(@PathVariable Long id, @RequestBody AtividadesDTO atividadeAtualizada){
         return atividadeservice.atualizarAtividadePorId(id,atividadeAtualizada) ;
     }
 
