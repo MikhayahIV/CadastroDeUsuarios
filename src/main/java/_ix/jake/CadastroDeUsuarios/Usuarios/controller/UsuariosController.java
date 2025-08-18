@@ -2,7 +2,6 @@ package _ix.jake.CadastroDeUsuarios.Usuarios.controller;
 
 
 import _ix.jake.CadastroDeUsuarios.Usuarios.DTOs.UsuariosDTO;
-import _ix.jake.CadastroDeUsuarios.Usuarios.model.UsuariosModel;
 import _ix.jake.CadastroDeUsuarios.Usuarios.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,17 +28,17 @@ public class UsuariosController {
     }
 
     @GetMapping("/listar")
-    public List<UsuariosModel> mostraraUsuarios(){
+    public List<UsuariosDTO> mostraraUsuarios(){
         return usuarioService.listarUsuarios() ;
     }
 
     @GetMapping("/listar/{id}")
-    public UsuariosModel listarPorId(@PathVariable Long id){
+    public UsuariosDTO listarPorId(@PathVariable Long id){
         return usuarioService.usuarioPorId(id);
     }
 
     @PutMapping("/atualizar/{id}")
-    public UsuariosModel alteraraPorId(@PathVariable Long id, @RequestBody UsuariosModel usuarioAtualizado){
+    public UsuariosDTO alteraraPorId(@PathVariable Long id, @RequestBody UsuariosDTO usuarioAtualizado){
         return usuarioService.atualizarPorId(id,usuarioAtualizado) ;
     }
 

@@ -23,17 +23,17 @@ public class AtividadeController {
     }
 
     @GetMapping("/listar")
-    public List<AtividadesModel> listarAtividades(){
+    public List<AtividadesDTO> listarAtividades(){
         return atividadeservice.listarAtividades();
     }
 
     @GetMapping("/listar/{id}")
-    public AtividadesModel listarPorId(@PathVariable Long id){
+    public AtividadesDTO listarPorId(@PathVariable Long id){
         return atividadeservice.listarPorId(id);
     }
 
     @PutMapping("/atualizar/{id}")
-    public AtividadesModel atualizarPorID(@PathVariable Long id, @RequestBody AtividadesModel atividadeAtualizada){
+    public AtividadesDTO atualizarPorID(@PathVariable Long id, @RequestBody AtividadesDTO atividadeAtualizada){
         return atividadeservice.atualizarAtividadePorId(id,atividadeAtualizada) ;
     }
 

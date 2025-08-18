@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioService {
@@ -22,13 +23,16 @@ public class UsuarioService {
         this.usuariosmapper = usuariosmapper;
     }
 
-    public List<UsuariosModel> listarUsuarios(){
-        return usuariosrepository.findAll();
+    public List<UsuariosDTO> listarUsuarios(){
+       List<UsuariosModel> usuariosModels = usuariosrepository.findAll();
+       return usuariosModels.stream()
+               .map(usuariosmapper::map)
+               .collect(Collectors.toList());
     }
 
-    public UsuariosModel usuarioPorId(Long id){
+    public UsuariosDTO usuarioPorId(Long id){
         Optional<UsuariosModel> usuarioPorIc = usuariosrepository.findById(id);
-        return usuarioPorIc.orElse(null);
+        return usuarioPorIc.map(usuariosmapper::map).orElse(null);
     }
 
     public UsuariosDTO criarUsuario(UsuariosDTO usuariosDTO){
@@ -41,10 +45,13 @@ public class UsuarioService {
         usuariosrepository.deleteById(id);
     }
 
-    public UsuariosModel atualizarPorId(Long id, UsuariosModel usuarioAtualizado){
-        if(usuariosrepository.existsById(id)){
-            usuarioAtualizado.setId(id);
-            return usuariosrepository.save(usuarioAtualizado);
+    public UsuariosDTO atualizarPorId(Long id, UsuariosDTO usuarioAtualizado){
+        Optional<UsuariosModel> usuariosModel = usuariosrepository.findById(id);
+        if(usuariosModel.isPresent()){
+            UsuariosModel usuariosAtt = usuariosmapper.map(usuarioAtualizado);
+            usuariosAtt.setId(id);
+            UsuariosModel usuarioSalvo = usuariosrepository.save(usuariosAtt);
+            return usuariosmapper.map(usuarioSalvo);
         }
         return null;
     }
