@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 public class UsuarioService {
 
 
-    private UsuariosRepository usuariosrepository;
-    private UsuariosMapper usuariosmapper;
+    private final UsuariosRepository usuariosrepository;
+    private final UsuariosMapper usuariosmapper;
 
     public UsuarioService(UsuariosRepository usuariosrepository, UsuariosMapper usuariosmapper) {
         this.usuariosrepository = usuariosrepository;

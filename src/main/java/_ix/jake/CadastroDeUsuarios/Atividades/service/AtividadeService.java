@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 @Service
 public class AtividadeService {
 
-    private AtividadesRepository atividadesrepository;
-    private AtividadesMapper atividadesmapper;
+    private final AtividadesRepository atividadesrepository;
+    private final AtividadesMapper atividadesmapper;
 
     public AtividadeService(AtividadesRepository atividadesrepository, AtividadesMapper atividadesmapper) {
         this.atividadesrepository = atividadesrepository;

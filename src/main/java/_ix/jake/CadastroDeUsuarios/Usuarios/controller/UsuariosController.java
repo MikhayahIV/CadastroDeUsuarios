@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/usuarios")
 public class UsuariosController {
 
-    private UsuarioService usuarioService;
+    private final UsuarioService usuarioService;
 
     public UsuariosController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;

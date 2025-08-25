@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/atividades")
 public class AtividadeController {
 
-    private AtividadeService atividadeservice;
+    private final AtividadeService atividadeservice;
 
     public AtividadeController(AtividadeService atividadeservice) {
         this.atividadeservice = atividadeservice;
