@@ -28,7 +28,7 @@ public class AtividadeService {
                 .collect(Collectors.toList());
     }
 
-    public AtividadesDTO listarPorId(Long id){
+    public AtividadesDTO atividadePorId(Long id){
         Optional<AtividadesModel> atividadesPorId = atividadesrepository.findById(id);
         return atividadesPorId.map(atividadesmapper::map).orElse(null);
     }
