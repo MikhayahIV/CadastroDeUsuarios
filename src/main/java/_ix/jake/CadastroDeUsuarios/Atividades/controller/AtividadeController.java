@@ -1,8 +1,9 @@
 package _ix.jake.CadastroDeUsuarios.Atividades.controller;
 
 import _ix.jake.CadastroDeUsuarios.Atividades.DTOs.AtividadesDTO;
-import _ix.jake.CadastroDeUsuarios.Atividades.model.AtividadesModel;
 import _ix.jake.CadastroDeUsuarios.Atividades.service.AtividadeService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,27 +19,48 @@ public class AtividadeController {
     }
 
     @PostMapping("/adicionar")
-    public AtividadesDTO criarAtividade(@RequestBody AtividadesDTO atividade){
-        return atividadeservice.criarAtividade(atividade);
+    public ResponseEntity<String> criarAtividade(@RequestBody AtividadesDTO atividade){
+       AtividadesDTO ativid = atividadeservice.criarAtividade(atividade);
+       return ResponseEntity.status(HttpStatus.CREATED)
+               .body("Usuario criado: "+ativid.getNome() +" id: "+ativid.getId());
     }
 
     @GetMapping("/listar")
-    public List<AtividadesDTO> listarAtividades(){
-        return atividadeservice.listarAtividades();
+    public ResponseEntity<List<AtividadesDTO>> listarAtividades(){
+        List<AtividadesDTO> listaDeAtividades = atividadeservice.listarAtividades();
+        return ResponseEntity.ok(listaDeAtividades);
     }
 
     @GetMapping("/listar/{id}")
-    public AtividadesDTO listarPorId(@PathVariable Long id){
-        return atividadeservice.listarPorId(id);
+    public ResponseEntity<?> listarPorId(@PathVariable Long id){
+           AtividadesDTO atividade =atividadeservice.atividadePorId(id);
+        if(atividadeservice.atividadePorId(id) != null){
+            return  ResponseEntity.ok(atividade);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Atividade com id: "+id+" não foi encontrada");
+        }
     }
 
     @PutMapping("/atualizar/{id}")
-    public AtividadesDTO atualizarPorID(@PathVariable Long id, @RequestBody AtividadesDTO atividadeAtualizada){
-        return atividadeservice.atualizarAtividadePorId(id,atividadeAtualizada) ;
+    public ResponseEntity<?> atualizarPorID(@PathVariable Long id, @RequestBody AtividadesDTO atividadeAtualizada){
+        AtividadesDTO atividade = atividadeservice.atualizarAtividadePorId(id,atividadeAtualizada);
+        if(atividadeservice.atividadePorId(id) != null){
+            return ResponseEntity.ok(atividade);
+        } else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Usuario com id: "+id+" não foi encontrado" );
+        }
     }
 
     @DeleteMapping("/deletar/{id}")
-    public void deletarPorId(@PathVariable Long id){
-        atividadeservice.deletarPorId(id);
+    public ResponseEntity<String> deletarPorId(@PathVariable Long id){
+        if(atividadeservice.atividadePorId(id) != null){
+            atividadeservice.deletarPorId(id);
+            return ResponseEntity.ok("Usuario deletado com Sucesso");
+        } else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Usuario com id: "+id+" não foi encontrado");
+        }
     }
 }
